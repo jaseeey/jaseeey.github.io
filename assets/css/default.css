@@ -12,7 +12,7 @@ a:visited { text-decoration: none; }
 .textbox_intro { margin-top: -10px; margin-left: 50px; color: #313131; }
 .textbox_intro .text_hi { font-size: 64px; font-weight: 400; }
 .textbox_intro .text_im { font-size: 36px; font-weight: 400; }
-.textbox_name { font-size: 70px; margin-top: -20px; margin-bottom: 25px; text-transform: uppercase; color: #008df9; }
+.textbox_name { font-size: 70px; margin-top: -20px; margin-bottom: 25px; text-transform: uppercase; color: #ff4949; }
 .textbox_name .text_jason { font-weight: 700; }
 .textbox_name .text_ilicic { font-weight: 400; }
 .textbox_desc { font-size: 24px; margin-left: 25px; color: #484848; }
@@ -22,65 +22,38 @@ a:visited { text-decoration: none; }
 .linkbox { font-family: 'SSSocialCircle'; font-size: 53px; margin-top: 35px; margin-left: 25px; }
 .linkbox .icon_mail a:link,
 .linkbox .icon_mail a:active
-.linkbox .icon_mail a:visited { color: #57a808; }
-.linkbox .icon_mail a:hover { -webkit-animation: icon_mail_pulse 2s linear infinite; color: #1e6f00; }
+.linkbox .icon_mail a:visited { color: #484848; }
+.linkbox .icon_mail a:hover { -webkit-animation: icon_mail_pulse 2s linear infinite; color: #57a808; }
 @-webkit-keyframes icon_mail_pulse {
-    0% { color: #57a808; }
-    50% { color: #1e6f00; }
-    100% { color: #57a808; }
-}
-.linkbox .icon_twitter a:link,
-.linkbox .icon_twitter a:active,
-.linkbox .icon_twitter a:visited { color: #22c8ff; }
-.linkbox .icon_twitter a:hover { -webkit-animation: icon_twitter_pulse 2s linear infinite; color: #059dff; }
-@-webkit-keyframes icon_twitter_pulse {
-    0% { color: #22c8ff; }
-    50% { color: #059dff; }
-    100% { color: #22c8ff; }
-}
-.linkbox .icon_facebook a:link,
-.linkbox .icon_facebook a:active,
-.linkbox .icon_facebook a:visited { color: #3b579d; }
-.linkbox .icon_facebook a:hover { -webkit-animation: icon_facebook_pulse 2s linear infinite; color: #0e1e61; }
-@-webkit-keyframes icon_facebook_pulse {
-    0% { color: #3b579d; }
-    50% { color: #0e1e61; }
-    100% { color: #3b579d; }
+    0% { color: #484848; }
+    50% { color: #57a808; }
+    100% { color: #484848; }
 }
 .linkbox .icon_linkedin a:link,
 .linkbox .icon_linkedin a:active,
-.linkbox .icon_linkedin a:visited { color: #0097bd; }
-.linkbox .icon_linkedin a:hover { -webkit-animation: icon_linkedin_pulse 2s linear infinite; color: #00598c; }
+.linkbox .icon_linkedin a:visited { color: #484848; }
+.linkbox .icon_linkedin a:hover { -webkit-animation: icon_linkedin_pulse 2s linear infinite; color: #0097bd; }
 @-webkit-keyframes icon_linkedin_pulse {
-    0% { color: #0097bd; }
-    50% { color: #00598c; }
-    100% { color: #0097bd; }
-}
-.linkbox .icon_google a:link,
-.linkbox .icon_google a:active,
-.linkbox .icon_google a:visited { color: #da4835; }
-.linkbox .icon_google a:hover { -webkit-animation: icon_google_pulse 2s linear infinite; color: #ba140b; }
-@-webkit-keyframes icon_google_pulse {
-    0% { color: #da4835; }
-    50% { color: #ba140b; }
-    100% { color: #da4835; }
+    0% { color: #484848; }
+    50% { color: #0097bd; }
+    100% { color: #484848; }
 }
 .linkbox .icon_skype a:link,
 .linkbox .icon_skype a:active,
-.linkbox .icon_skype a:visited { color: #00b8ed; }
-.linkbox .icon_skype a:hover { -webkit-animation: icon_skype_pulse 2s linear infinite; color: #0085dc; }
+.linkbox .icon_skype a:visited { color: #484848; }
+.linkbox .icon_skype a:hover { -webkit-animation: icon_skype_pulse 2s linear infinite; color: #00b8ed; }
 @-webkit-keyframes icon_skype_pulse {
-    0% { color: #00b8ed; }
-    50% { color: #0085dc; }
-    100% { color: #00b8ed; }
+    0% { color: #484848; }
+    50% { color: #00b8ed; }
+    100% { color: #484848; }
 }
 .linkbox .icon_github a:link,
 .linkbox .icon_github a:active,
-.linkbox .icon_github a:visited { color: #313131; }
-.linkbox .icon_github a:hover { -webkit-animation: icon_github_pulse 2s linear infinite; color: #090909; }
+.linkbox .icon_github a:visited { color: #484848; }
+.linkbox .icon_github a:hover { -webkit-animation: icon_github_pulse 2s linear infinite; color: #313131; }
 @-webkit-keyframes icon_github_pulse {
-    0% { color: #313131; }
-    50% { color: #090909; }
-    100% { color: #313131; }
+    0% { color: #484848; }
+    50% { color: #313131; }
+    100% { color: #484848; }
 }
 #footer { font-family: 'Open Sans'; font-size: 12px; font-weight: 400; position: absolute; bottom: 45px; margin-left: 145px; color: #313131; }
