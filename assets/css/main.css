@@ -37,6 +37,7 @@ a:visited {
 #wrapper {
     font-family: 'Open Sans', sans-serif;
     margin-left: 120px;
+    margin-right: 120px;
     max-width: 650px;
 }
 
