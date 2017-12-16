@@ -1,0 +1,26 @@
+{
+  "name": "jasey",
+  "version": "1.0.0",
+  "description": "The splash page for jasey.io",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/jaseeey/jasey.git"
+  },
+  "author": "Jason Ilicic <me@jasey.io>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://gitlab.com/jaseeey/jasey/issues"
+  },
+  "homepage": "https://gitlab.com/jaseeey/jasey#README",
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-watch": "1.0.0"
+  }
+}
