@@ -1,0 +1,101 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300);
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -khtml-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+html {
+    min-height: 675px;
+}
+
+body {
+    position: relative;
+}
+
+a:link,
+a:active,
+a:visited {
+    text-decoration: none;
+}
+
+#container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#wrapper {
+    font-family: 'Open Sans';
+    margin-left: 120px;
+}
+
+.text-box_intro {
+    margin-top: -10px;
+    margin-left: 50px;
+    color: #313131;
+}
+
+.text-box_intro .text_hi {
+    font-size: 64px;
+    font-weight: 400;
+}
+
+.text-box_intro .text_im {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.text-box_name {
+    font-size: 70px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #ff5d5d;
+}
+
+.text-box_name .text_jason {
+    font-weight: 700;
+}
+
+.text-box_name .text_ilicic {
+    font-weight: 400;
+}
+
+.text-box_desc {
+    font-size: 24px;
+    margin-left: 25px;
+    color: #484848;
+}
+
+.text-box_desc .text_title {
+    font-weight: 600;
+}
+
+.text-box_desc .text_obj {
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.text-box_desc .text_links {
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+#footer {
+    font-family: 'Open Sans';
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 45px;
+    margin-left: 145px;
+    color: #313131;
+}
