@@ -12,7 +12,7 @@ a:visited { text-decoration: none; }
 .textbox_intro { margin-top: -10px; margin-left: 50px; color: #313131; }
 .textbox_intro .text_hi { font-size: 64px; font-weight: 400; }
 .textbox_intro .text_im { font-size: 36px; font-weight: 400; }
-.textbox_name { font-size: 70px; margin-top: -20px; margin-bottom: 25px; text-transform: uppercase; color: #ff4949; }
+.textbox_name { font-size: 70px; margin-top: -20px; margin-bottom: 25px; text-transform: uppercase; color: #29a6c3; }
 .textbox_name .text_jason { font-weight: 700; }
 .textbox_name .text_ilicic { font-weight: 400; }
 .textbox_desc { font-size: 24px; margin-left: 25px; color: #484848; }
