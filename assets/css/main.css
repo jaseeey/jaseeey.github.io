@@ -34,7 +34,7 @@ a:visited {
 }
 
 #wrapper {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     margin-left: 120px;
     max-width: 650px;
 }
@@ -92,7 +92,7 @@ a:visited {
 }
 
 #footer {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     font-weight: 400;
     position: absolute;
