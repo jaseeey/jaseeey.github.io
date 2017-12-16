@@ -1,0 +1,46 @@
+.icon-box {
+    margin-top: 35px;
+    margin-left: 25px;
+}
+
+.icon-box span {
+    margin-right: 10px;
+}
+
+.icon-box i {
+    border-radius: 40px;
+    color: #fff;
+    font-size: 35px;
+    line-height: 38px;
+    height: 40px;
+    padding: 5px;
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icon-box i:hover {
+    -webkit-animation: icon_pulse 2s linear infinite;
+}
+
+@-webkit-keyframes icon_pulse {
+    50% {
+        background: #444444;
+    }
+}
+
+.icon-box .icon_gitlab i {
+    background: #e24329;
+}
+
+.icon-box .icon_linkedin i {
+    background: #0097bd;
+}
+
+.icon-box .icon_mail i {
+    background: #099200;
+}
+
+.icon-box .icon_stackoverflow i {
+    background: #f48024;
+}
