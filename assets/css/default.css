@@ -1,0 +1,59 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300);
+@import url(../fonts/ss-social-circle.css);
+html,
+body { height: 100%; margin: 0; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -khtml-user-select: none; -webkit-touch-callout: none; }
+html { min-height: 600px; }
+body { position: relative; }
+a:link,
+a:active,
+a:visited { text-decoration: none; }
+#container { position: relative; top: 50%; transform: translateY(-50%); }
+#wrapper { font-family: 'Open Sans'; margin-left: 120px; }
+.textbox_intro { margin-top: -10px; margin-left: 50px; color: #313131; }
+.textbox_intro .text_hi { font-size: 64px; font-weight: 400; }
+.textbox_intro .text_im { font-size: 36px; font-weight: 400; }
+.textbox_name { font-size: 70px; margin-top: -20px; margin-bottom: 25px; text-transform: uppercase; color: #ff4949; }
+.textbox_name .text_jason { font-weight: 700; }
+.textbox_name .text_ilicic { font-weight: 400; }
+.textbox_desc { font-size: 24px; margin-left: 25px; color: #484848; }
+.textbox_desc .text_title { font-weight: 600; }
+.textbox_desc .text_obj { font-weight: 400; margin-top: -5px; }
+.textbox_desc .text_links { font-weight: 300; margin-top: 20px; }
+.linkbox { font-family: 'SSSocialCircle'; font-size: 53px; margin-top: 35px; margin-left: 25px; }
+.linkbox .icon_mail a:link,
+.linkbox .icon_mail a:active
+.linkbox .icon_mail a:visited { color: #484848; }
+.linkbox .icon_mail a:hover { -webkit-animation: icon_mail_pulse 2s linear infinite; color: #57a808; }
+@-webkit-keyframes icon_mail_pulse {
+    0% { color: #484848; }
+    50% { color: #57a808; }
+    100% { color: #484848; }
+}
+.linkbox .icon_linkedin a:link,
+.linkbox .icon_linkedin a:active,
+.linkbox .icon_linkedin a:visited { color: #484848; }
+.linkbox .icon_linkedin a:hover { -webkit-animation: icon_linkedin_pulse 2s linear infinite; color: #0097bd; }
+@-webkit-keyframes icon_linkedin_pulse {
+    0% { color: #484848; }
+    50% { color: #0097bd; }
+    100% { color: #484848; }
+}
+.linkbox .icon_skype a:link,
+.linkbox .icon_skype a:active,
+.linkbox .icon_skype a:visited { color: #484848; }
+.linkbox .icon_skype a:hover { -webkit-animation: icon_skype_pulse 2s linear infinite; color: #00b8ed; }
+@-webkit-keyframes icon_skype_pulse {
+    0% { color: #484848; }
+    50% { color: #00b8ed; }
+    100% { color: #484848; }
+}
+.linkbox .icon_github a:link,
+.linkbox .icon_github a:active,
+.linkbox .icon_github a:visited { color: #484848; }
+.linkbox .icon_github a:hover { -webkit-animation: icon_github_pulse 2s linear infinite; color: #313131; }
+@-webkit-keyframes icon_github_pulse {
+    0% { color: #484848; }
+    50% { color: #313131; }
+    100% { color: #484848; }
+}
+#footer { font-family: 'Open Sans'; font-size: 12px; font-weight: 400; position: absolute; bottom: 45px; margin-left: 145px; color: #313131; }
