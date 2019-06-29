@@ -14,7 +14,6 @@ body {
 }
 
 html {
-    background: url('../img/grey.png') repeat;
     filter: saturate(200%);
     min-height: 720px;
     min-width: 680px;
@@ -28,6 +27,14 @@ a:link,
 a:active,
 a:visited {
     text-decoration: none;
+}
+
+canvas {
+    background-color: #ffffff;
+    left: 0;
+    opacity: 0.15;
+    position: absolute;
+    top: 0;
 }
 
 #container {
