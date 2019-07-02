@@ -1,11 +1,11 @@
 'use strict';
 
-const speed = 5;
-const minDist = 20;
+const speed = 6;
+const minDist = 10;
 const maxDist = 50;
 const initWidth = 1;
-const initLines = 300;
-const maxLines = 2500;
+const initLines = 100;
+const maxLines = 1000;
 const dirCoordinates = [
     [0, 1], [1, 0], [0, -1], [-1, 0],
     [.7, .7], [.7, -.7], [-.7, .7], [-.7, -.7],
