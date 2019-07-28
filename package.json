@@ -17,10 +17,15 @@
   },
   "homepage": "https://gitlab.com/jaseeey/jasey#README",
   "devDependencies": {
-    "grunt": "1.0.1",
-    "grunt-contrib-clean": "1.1.0",
-    "grunt-contrib-connect": "1.0.2",
-    "grunt-contrib-copy": "1.0.0",
-    "grunt-contrib-watch": "1.0.0"
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-clean-dir": "^1.0.2",
+    "gulp-copy": "^4.0.1",
+    "gulp-uglify": "^3.0.2",
+    "readable-stream": "^3.4.0",
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "gulp-htmlmin": "^5.0.1"
   }
 }
