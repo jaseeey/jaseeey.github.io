@@ -4,6 +4,7 @@
   "description": "The splash page for jasey.io",
   "main": "Gruntfile.js",
   "scripts": {
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
