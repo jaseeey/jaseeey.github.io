@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700,600,300);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
 
 html,
 body {
@@ -20,6 +20,7 @@ html {
 }
 
 body {
+    font-family: 'Open Sans', sans-serif;
     position: relative;
 }
 
@@ -32,9 +33,11 @@ a:visited {
 canvas {
     background-color: #ffffff;
     left: 0;
-    opacity: 0.15;
+    filter: blur(1px) saturate(0.25);
+    opacity: 0.3;
     position: absolute;
     top: 0;
+    z-index: -1;
 }
 
 #container {
@@ -44,7 +47,6 @@ canvas {
 }
 
 #wrapper {
-    font-family: 'Open Sans', sans-serif;
     margin-left: 120px;
     margin-right: 120px;
     max-width: 650px;
@@ -53,7 +55,7 @@ canvas {
 .text-box_intro {
     margin-top: -10px;
     margin-left: 50px;
-    color: #313131;
+    color: #525252;
 }
 
 .text-box_intro .text_hi {
@@ -85,7 +87,7 @@ canvas {
 .text-box_desc {
     font-size: 1.5rem;
     margin-left: 25px;
-    color: #484848;
+    color: #757575;
 }
 
 .text-box_desc .text_title {
@@ -103,7 +105,6 @@ canvas {
 }
 
 #footer {
-    font-family: 'Open Sans', sans-serif;
     font-size: 0.8rem;
     font-weight: 400;
     position: absolute;

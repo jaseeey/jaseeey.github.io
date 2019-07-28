@@ -16,16 +16,28 @@
     padding: 0.4rem;
     width: 3rem;
     text-align: center;
+    transform: scale(1.0);
+    transition: all 100ms ease-in-out;
     vertical-align: middle;
 }
 
+/*.icon-box i:hover {*/
+/*    -webkit-animation: icon_pulse 2s normal infinite;*/
+/*}*/
+
 .icon-box i:hover {
-    -webkit-animation: icon_pulse 2s linear infinite;
+    animation: icon_pulse 3s linear infinite;
+    transform: scale(1.1);
+    transition: all 100ms ease-in-out;
 }
 
 @-webkit-keyframes icon_pulse {
+    0% {
+        filter: saturate(1);
+    }
+
     50% {
-        background: #444444;
+        filter: saturate(0.1);
     }
 }
 
