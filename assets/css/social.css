@@ -1,33 +1,27 @@
 .icon-box {
-    margin-top: 35px;
-    margin-left: 25px;
+    margin-top: 3rem;
+    margin-left: 1.6rem;
 }
 
 .icon-box span {
-    margin-right: 10px;
+    margin-right: 2rem;
 }
 
 .icon-box i {
-    border-radius: 3rem;
     color: #fff;
     font-size: 2.1rem;
-    line-height: 3rem;
-    height: 3rem;
+    height: 2rem;
     padding: 0.4rem;
-    width: 3rem;
+    width: 2rem;
     text-align: center;
-    transform: scale(1.0);
+    transform: scale(1.5);
     transition: all 100ms ease-in-out;
     vertical-align: middle;
 }
 
-/*.icon-box i:hover {*/
-/*    -webkit-animation: icon_pulse 2s normal infinite;*/
-/*}*/
-
 .icon-box i:hover {
     animation: icon_pulse 3s linear infinite;
-    transform: scale(1.1);
+    transform: scale(1.8);
     transition: all 100ms ease-in-out;
 }
 
@@ -41,8 +35,8 @@
     }
 }
 
-.icon-box .icon_gitlab i {
-    background: #e24329;
+.icon-box .icon_github i {
+    background: #000000;
 }
 
 .icon-box .icon_linkedin i {
@@ -50,7 +44,7 @@
 }
 
 .icon-box .icon_mail i {
-    background: #099200;
+    background: #e26161;
 }
 
 .icon-box .icon_stackoverflow i {
