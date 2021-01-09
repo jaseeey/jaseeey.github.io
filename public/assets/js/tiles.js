@@ -3,7 +3,7 @@ let c = document.getElementById('c'),
     w = c.width = window.innerWidth,
     h = c.height = window.innerHeight,
     particles = [],
-    particleCount = 100;
+    particleCount = 50;
 
 window.addEventListener('resize', stage);
 
