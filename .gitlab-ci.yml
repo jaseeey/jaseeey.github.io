@@ -6,8 +6,9 @@ pages:
     - npm install
   script:
     - npm run build
+    - mv build public
   artifacts:
     paths:
-      - build
+      - public
   only:
     - master
