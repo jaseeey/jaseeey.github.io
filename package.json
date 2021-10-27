@@ -19,11 +19,11 @@
   "homepage": "https://gitlab.com/jaseeey/jasey#README",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.2.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-clean-dir": "^1.0.2",
     "gulp-copy": "^4.0.1",
     "gulp-uglify": "^3.0.2",
-    "readable-stream": "^3.4.0",
+    "readable-stream": "^3.6.0",
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
