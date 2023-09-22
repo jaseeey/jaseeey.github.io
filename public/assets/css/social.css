@@ -8,8 +8,9 @@
 }
 
 .icon-box i {
+    border-radius: 8px;
     color: #fff;
-    font-size: 2.1rem;
+    font-size: 2.05rem;
     height: 2rem;
     padding: 0.4rem;
     width: 2rem;
@@ -41,6 +42,10 @@
 
 .icon-box .icon_linkedin i {
     background: #0097bd;
+}
+
+.icon-box .icon_medium i {
+    background: #000000;
 }
 
 .icon-box .icon_mail i {
