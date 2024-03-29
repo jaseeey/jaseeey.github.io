@@ -55,7 +55,7 @@ canvas {
 .text-box_intro {
     margin-top: -10px;
     margin-left: 50px;
-    color: #525252;
+    color: #2c2c2c;
 }
 
 .text-box_intro .text_hi {
@@ -73,7 +73,7 @@ canvas {
     margin-top: -20px;
     margin-bottom: 25px;
     text-transform: uppercase;
-    color: #c96666;
+    color: #ff3a3a;
 }
 
 .text-box_name .text_jason {
