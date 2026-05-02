@@ -20,7 +20,7 @@ html {
 body {
     align-items: center;
     background:
-        radial-gradient(circle at 78% 18%, rgba(255, 58, 58, 0.09), transparent 32rem),
+        radial-gradient(circle at 78% 18%, rgba(0, 0, 204, 0.22), transparent 32rem),
         linear-gradient(135deg, rgba(255, 255, 255, 0.035) 25%, transparent 25%) 0 0 / 26px 26px,
         #050505;
     color: #d7d7d7;
@@ -108,7 +108,7 @@ canvas {
 }
 
 .shell-status {
-    color: #ff6a3d;
+    color: #00ff00;
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0 1.15rem;
@@ -127,7 +127,7 @@ canvas {
 }
 
 .brand-name {
-    color: #ff3a3a;
+    color: #0000cc;
     font-size: clamp(3rem, 18vw, 8rem);
     letter-spacing: 0;
     line-height: 0.88;

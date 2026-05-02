@@ -26,7 +26,7 @@
 .system-link:hover,
 .system-link:focus,
 .system-link.is-selected {
-    background: rgba(255, 58, 58, 0.1);
+    background: rgba(0, 0, 204, 0.3);
     color: #ffffff;
     outline: none;
 }
@@ -42,7 +42,7 @@
 .system-link:focus .system-link_label,
 .system-link.is-selected .system-link_index,
 .system-link.is-selected .system-link_label {
-    color: #ff6a3d;
+    color: #0000cc;
 }
 
 .system-link_value {
@@ -58,6 +58,6 @@
     }
 
     .system-link_label {
-        color: #ff6a3d;
+        color: #0000cc;
     }
 }

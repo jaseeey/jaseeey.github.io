@@ -43,7 +43,7 @@
         for (let i = 0; i < particles.length; i++) {
             const particle = particles[i],
                 direction = particleDirections[Math.floor(Math.random() * particleDirections.length)];
-            context.fillStyle = i % 5 === 0 ? 'rgba(255,106,61,0.16)' : 'rgba(255,255,255,0.08)';
+            context.fillStyle = i % 5 === 0 ? 'rgba(0,0,204,0.26)' : 'rgba(255,255,255,0.08)';
             context.beginPath();
             context.fillRect(particle.location.x, particle.location.y, particle.size, particle.size);
             moveParticle(particle, direction);
