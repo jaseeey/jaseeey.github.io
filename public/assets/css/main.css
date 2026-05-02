@@ -68,6 +68,10 @@ canvas {
     z-index: 1;
 }
 
+.shell-window.is-dragging {
+    cursor: grabbing;
+}
+
 .shell-window::after {
     color: rgba(255, 255, 255, 0.07);
     content: "01001010 01001001 00100000 01000100 01000101 01010110";
@@ -83,10 +87,16 @@ canvas {
     align-items: center;
     background: rgba(255, 255, 255, 0.035);
     border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+    cursor: grab;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     min-height: 3rem;
+    touch-action: none;
+}
+
+.shell-window.is-dragging .shell-header {
+    cursor: grabbing;
 }
 
 .shell-label {

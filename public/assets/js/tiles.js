@@ -3,7 +3,9 @@ let c = document.getElementById('c'),
     w = c.width = window.innerWidth,
     h = c.height = window.innerHeight,
     particles = [],
-    particleCount = 70;
+    particleCount = 70,
+    selectedContactIndex = -1,
+    shellDrag = null;
 
 const contactRevealDelay = 3200,
     contactEntries = {
@@ -39,9 +41,11 @@ const contactRevealDelay = 3200,
         }
     };
 
-window.addEventListener('resize', stage);
+window.addEventListener('resize', handleResize);
 
 function init() {
+    initializeContactKeyboard();
+    initializeShellDrag();
     scheduleContactHydration();
     for (let i = 0; i < particleCount; i++)
         particles.push(new Particle());
@@ -68,6 +72,7 @@ function hydrateContactLinks() {
 
         link.href = `${decodeContact(entry.hrefPrefix || [])}${decodeContact(entry.href)}`;
         link.setAttribute('aria-label', decodeContact(entry.ariaLabel));
+        link.dataset.contactResolved = 'true';
         value.textContent = decodeContact(entry.display);
 
         if (entry.external) {
@@ -75,6 +80,157 @@ function hydrateContactLinks() {
             link.rel = 'noopener noreferrer';
         }
     });
+}
+
+function getContactLinks() {
+    return Array.from(document.querySelectorAll('[data-contact-link]'));
+}
+
+function initializeContactKeyboard() {
+    getContactLinks().forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (link.dataset.contactResolved !== 'true') event.preventDefault();
+        });
+    });
+
+    window.addEventListener('keydown', handleContactKeydown);
+}
+
+function handleContactKeydown(event) {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.target && event.target.matches && event.target.matches('input, textarea, select, button')) return;
+
+    if (/^[1-5]$/.test(event.key)) {
+        event.preventDefault();
+        selectContact(Number(event.key) - 1);
+        activateContact(selectedContactIndex);
+        return;
+    }
+
+    if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        moveContactSelection(1);
+        return;
+    }
+
+    if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        moveContactSelection(-1);
+        return;
+    }
+
+    if (event.key === 'Enter' && selectedContactIndex >= 0) {
+        event.preventDefault();
+        activateContact(selectedContactIndex);
+    }
+}
+
+function selectContact(index) {
+    const links = getContactLinks();
+
+    if (!links.length) return;
+
+    selectedContactIndex = Math.max(0, Math.min(index, links.length - 1));
+    links.forEach((link, linkIndex) => {
+        link.classList.toggle('is-selected', linkIndex === selectedContactIndex);
+    });
+    links[selectedContactIndex].focus();
+}
+
+function moveContactSelection(direction) {
+    const links = getContactLinks();
+
+    if (!links.length) return;
+
+    const nextIndex = selectedContactIndex < 0
+        ? (direction > 0 ? 0 : links.length - 1)
+        : (selectedContactIndex + direction + links.length) % links.length;
+
+    selectContact(nextIndex);
+}
+
+function activateContact(index) {
+    const link = getContactLinks()[index];
+
+    if (!link || link.dataset.contactResolved !== 'true') return;
+
+    link.click();
+}
+
+function initializeShellDrag() {
+    const shell = document.querySelector('[data-shell-window]'),
+        handle = document.querySelector('[data-shell-handle]');
+
+    if (!shell || !handle) return;
+
+    handle.addEventListener('pointerdown', (event) => startShellDrag(event, shell, handle));
+    window.addEventListener('pointermove', moveShell);
+    window.addEventListener('pointerup', stopShellDrag);
+    window.addEventListener('pointercancel', stopShellDrag);
+}
+
+function startShellDrag(event, shell, handle) {
+    if (typeof event.button === 'number' && event.button !== 0) return;
+
+    const rect = shell.getBoundingClientRect();
+
+    event.preventDefault();
+    if (handle.setPointerCapture) handle.setPointerCapture(event.pointerId);
+
+    shellDrag = {
+        shell,
+        offsetX: event.clientX - rect.left,
+        offsetY: event.clientY - rect.top
+    };
+
+    shell.classList.add('is-dragging');
+    shell.style.position = 'fixed';
+    shell.style.left = `${rect.left}px`;
+    shell.style.top = `${rect.top}px`;
+    shell.style.width = `${rect.width}px`;
+    shell.style.maxWidth = 'none';
+}
+
+function moveShell(event) {
+    if (!shellDrag) return;
+
+    const rect = shellDrag.shell.getBoundingClientRect(),
+        nextLeft = clamp(event.clientX - shellDrag.offsetX, 0, Math.max(0, window.innerWidth - rect.width)),
+        nextTop = clamp(event.clientY - shellDrag.offsetY, 0, Math.max(0, window.innerHeight - rect.height));
+
+    shellDrag.shell.style.left = `${nextLeft}px`;
+    shellDrag.shell.style.top = `${nextTop}px`;
+}
+
+function stopShellDrag() {
+    if (!shellDrag) return;
+
+    shellDrag.shell.classList.remove('is-dragging');
+    shellDrag = null;
+}
+
+function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+}
+
+function handleResize() {
+    stage();
+    clampMovedShell();
+}
+
+function clampMovedShell() {
+    const shell = document.querySelector('[data-shell-window]');
+
+    if (!shell || shell.style.position !== 'fixed') return;
+
+    const rect = shell.getBoundingClientRect(),
+        nextWidth = Math.min(rect.width, window.innerWidth),
+        nextLeft = clamp(rect.left, 0, Math.max(0, window.innerWidth - nextWidth)),
+        nextTop = clamp(rect.top, 0, Math.max(0, window.innerHeight - rect.height));
+
+    shell.style.width = `${nextWidth}px`;
+    shell.style.left = `${nextLeft}px`;
+    shell.style.top = `${nextTop}px`;
 }
 
 function stage() {
