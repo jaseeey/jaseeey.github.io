@@ -224,17 +224,6 @@ body {
     padding: 38px 34px 26px;
 }
 
-.session-label {
-    color: var(--ornament);
-    font-size: 12px;
-    margin: 0;
-    padding-bottom: 16px;
-}
-
-.session-label span {
-    color: var(--fg-2);
-}
-
 .noscript {
     border-left: 2px solid var(--warn);
     color: var(--fg-2);
@@ -367,10 +356,6 @@ body {
         padding: 32px 40px 26px;
     }
 
-    .session-label {
-        padding-bottom: 14px;
-    }
-
     .legal {
         background: none;
         border-right: 0;
@@ -440,10 +425,6 @@ body {
 
     .session {
         padding: 0;
-    }
-
-    .session-label {
-        display: none;
     }
 
     .legal {

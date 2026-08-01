@@ -1,3 +1,33 @@
+.transcript {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-color: var(--rule) transparent;
+    scrollbar-width: thin;
+}
+
+.motd {
+    color: var(--fg-3);
+    margin-top: auto;
+    min-height: calc(7 * 1.7em);
+}
+
+.transcript-echo {
+    color: #5c635e;
+    margin: 0;
+    padding-bottom: 4px;
+    padding-top: 1.7em;
+}
+
+.transcript-hint {
+    color: var(--accent);
+    margin: 0;
+    min-height: 1.7em;
+    padding-top: 10px;
+}
+
 .endpoints {
     display: flex;
     flex-direction: column;
@@ -68,9 +98,7 @@
 
 .shell {
     display: flex;
-    flex: 1;
     flex-direction: column;
-    min-height: 0;
 }
 
 .shell-toggle {
@@ -112,20 +140,17 @@
 }
 
 .shell-body {
+    border-top: 1px solid var(--rule);
     display: flex;
-    flex: 1;
     flex-direction: column;
-    min-height: 0;
+    margin-top: 10px;
+    padding-top: 12px;
 }
 
 .log {
     display: flex;
-    flex: 1;
     flex-direction: column;
-    justify-content: flex-end;
-    min-height: 0;
-    overflow: hidden;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .log-line {
@@ -158,17 +183,14 @@
 
 .prompt {
     align-items: center;
-    border-top: 1px solid var(--rule);
     display: flex;
     gap: 8px;
-    margin-top: 10px;
-    padding-top: 12px;
     position: relative;
 }
 
 .prompt:focus-within {
     outline: 2px solid var(--accent);
-    outline-offset: 3px;
+    outline-offset: 2px;
 }
 
 .prompt-glyph {
@@ -219,7 +241,18 @@
     outline: none;
     position: absolute;
     right: 0;
-    top: 12px;
+    top: 0;
+}
+
+@media (max-width: 899px) and (max-height: 950px) {
+    .motd {
+        display: none;
+    }
+
+    .transcript-echo {
+        margin-top: auto;
+        padding-top: 0;
+    }
 }
 
 @media (max-width: 899px) {
@@ -286,6 +319,16 @@
         background: var(--row-hover);
     }
 
+    .transcript {
+        flex: 0 0 auto;
+        overflow: visible;
+    }
+
+    .transcript-echo,
+    .transcript-hint {
+        display: none;
+    }
+
     .shell {
         flex: 0 0 auto;
         margin-top: auto;
@@ -296,31 +339,36 @@
     }
 
     .shell-body {
-        border-top: 1px solid var(--rule);
+        border-top: 0;
         display: none;
-        padding-top: 12px;
+        margin-top: 0;
+        padding-top: 0;
     }
 
-    .shell[data-open="true"] .shell-toggle {
+    .session[data-shell-open="true"] .shell-toggle {
         display: none;
     }
 
-    .shell[data-open="true"] .shell-body {
+    .session[data-shell-open="true"] .shell-body {
         display: flex;
     }
 
     .log {
-        flex: 0 0 auto;
+        display: none;
+    }
+
+    .session[data-shell-open="true"] .log {
+        border-top: 1px solid var(--rule);
+        display: flex;
         font-size: 12px;
         height: 88px;
-        padding-top: 0;
+        justify-content: flex-end;
+        overflow: hidden;
+        padding-top: 12px;
     }
 
     .prompt {
-        border-top: 0;
-        margin-top: 0;
         min-height: 44px;
-        padding-top: 0;
     }
 
     .prompt-close {
@@ -334,9 +382,13 @@
 }
 
 @media (max-width: 899px) and (max-height: 620px), (max-height: 400px) {
-    .log {
+    .transcript {
         flex: 0 0 auto;
-        max-height: 88px;
+        overflow: visible;
+    }
+
+    .motd {
+        margin-top: 0;
     }
 
     .shell {

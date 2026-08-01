@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="assets/css/session.css">
         <noscript>
             <style>
-                .endpoints,
+                .transcript,
                 .shell {
                     display: none;
                 }
@@ -50,57 +50,62 @@
                     <span class="status-label">STATUS:&nbsp;</span><span class="status-value">ONLINE</span>
                 </p>
             </aside>
-            <section class="session" data-session>
-                <p class="session-label">session · <span>ls -1 endpoints</span></p>
-                <nav class="endpoints" aria-label="Endpoints">
-                    <a class="endpoint" data-endpoint="email" href="#">
-                        <span class="endpoint-index">01</span>
-                        <span class="endpoint-body">
-                            <span class="endpoint-label">email</span>
-                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
-                        </span>
-                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="endpoint" data-endpoint="github" href="#">
-                        <span class="endpoint-index">02</span>
-                        <span class="endpoint-body">
-                            <span class="endpoint-label">github</span>
-                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
-                        </span>
-                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="endpoint" data-endpoint="blog" href="#">
-                        <span class="endpoint-index">03</span>
-                        <span class="endpoint-body">
-                            <span class="endpoint-label">blog</span>
-                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
-                        </span>
-                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="endpoint" data-endpoint="linkedin" href="#">
-                        <span class="endpoint-index">04</span>
-                        <span class="endpoint-body">
-                            <span class="endpoint-label">linkedin</span>
-                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
-                        </span>
-                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="endpoint" data-endpoint="stack" href="#">
-                        <span class="endpoint-index">05</span>
-                        <span class="endpoint-body">
-                            <span class="endpoint-label">stack</span>
-                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
-                        </span>
-                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
-                    </a>
-                </nav>
+            <section class="session" data-session data-shell-open="false">
+                <div class="transcript" data-transcript>
+                    <div class="motd" data-motd></div>
+                    <p class="transcript-echo"><span aria-hidden="true">$ </span>ls -1 endpoints</p>
+                    <nav class="endpoints" aria-label="Endpoints">
+                        <a class="endpoint" data-endpoint="email" href="#">
+                            <span class="endpoint-index">01</span>
+                            <span class="endpoint-body">
+                                <span class="endpoint-label">email</span>
+                                <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                            </span>
+                            <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="endpoint" data-endpoint="github" href="#">
+                            <span class="endpoint-index">02</span>
+                            <span class="endpoint-body">
+                                <span class="endpoint-label">github</span>
+                                <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                            </span>
+                            <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="endpoint" data-endpoint="blog" href="#">
+                            <span class="endpoint-index">03</span>
+                            <span class="endpoint-body">
+                                <span class="endpoint-label">blog</span>
+                                <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                            </span>
+                            <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="endpoint" data-endpoint="linkedin" href="#">
+                            <span class="endpoint-index">04</span>
+                            <span class="endpoint-body">
+                                <span class="endpoint-label">linkedin</span>
+                                <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                            </span>
+                            <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="endpoint" data-endpoint="stack" href="#">
+                            <span class="endpoint-index">05</span>
+                            <span class="endpoint-body">
+                                <span class="endpoint-label">stack</span>
+                                <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                            </span>
+                            <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </nav>
+                    <p class="transcript-hint" data-hint></p>
+                    <div class="log" role="log" aria-live="polite" data-log></div>
+                </div>
                 <noscript>
                     <p class="noscript">
                         Endpoints are assembled in the browser, so this list stays empty without JavaScript.
                         Reach JI DEV by email at me (at) jasey (dot) io.
                     </p>
                 </noscript>
-                <div class="shell" data-shell data-open="false">
+                <div class="shell" data-shell>
                     <button class="shell-toggle" type="button" data-shell-toggle
                         aria-expanded="false" aria-controls="shell-body">
                         <span class="shell-toggle-glyph" aria-hidden="true">›</span>
@@ -108,7 +113,6 @@
                         <span class="shell-toggle-hint" aria-hidden="true">tap</span>
                     </button>
                     <div class="shell-body" id="shell-body">
-                        <div class="log" role="log" aria-live="polite" data-log></div>
                         <form class="prompt" data-prompt>
                             <span class="prompt-glyph" aria-hidden="true">›</span>
                             <span class="prompt-echo" data-prompt-echo></span>

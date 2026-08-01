@@ -1,15 +1,16 @@
 (() => {
     const logLimit = 40,
-        bootDelay = 200,
-        bootStep = 280,
         tagline = 'custom software / integrations / automation',
         commandNames = ['help', 'ls', 'links', 'open', 'whoami', 'clear', 'date', 'uname', 'contact'],
-        bootLines = [
+        motdLines = [
             ['jasey.io tty1 — session opened', 'dim'],
-            ['· integrity ........... ok', 'dim'],
-            ['· endpoints ........... 5 records', 'dim'],
-            ['· type \'help\' for commands', 'accent']
+            ['Welcome to jasey.io.', 'fg'],
+            ['· host ............... jasey.io', 'dim'],
+            ['· build .............. 1.0 static x86_64', 'dim'],
+            ['· integrity .......... ok', 'dim'],
+            ['· endpoints .......... 5 records', 'dim']
         ],
+        hintLine = '· type \'help\' for commands',
         helpLines = [
             ['ls                list endpoints', 'fg'],
             ['open <n|name>     open endpoint', 'fg'],
@@ -17,8 +18,6 @@
             ['clear             clear output', 'fg'],
             ['↹ completes · ↑↓ recalls history', 'dim']
         ];
-    const isMotionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-        timers = [];
     let logLines = [],
         history = [],
         historyIndex = -1;
@@ -35,22 +34,23 @@
         input.addEventListener('keydown', handleKeyDown);
         session.addEventListener('click', event => focusPromptFromPane(event, input));
         bindShell(input);
-        runBootSequence();
+        renderMotd();
+        scrollTranscript();
     }
 
     function bindShell(input) {
-        const shell = document.querySelector('[data-shell]'),
+        const session = document.querySelector('[data-session]'),
             toggle = document.querySelector('[data-shell-toggle]'),
             close = document.querySelector('[data-shell-close]');
-        if (!shell || !toggle || !close) return;
+        if (!session || !toggle || !close) return;
         toggle.addEventListener('click', () => {
-            shell.dataset.open = 'true';
+            session.dataset.shellOpen = 'true';
             toggle.setAttribute('aria-expanded', 'true');
             trackViewport();
             input.focus();
         });
         close.addEventListener('click', () => {
-            shell.dataset.open = 'false';
+            session.dataset.shellOpen = 'false';
             toggle.setAttribute('aria-expanded', 'false');
             input.blur();
             untrackViewport();
@@ -58,14 +58,27 @@
         });
     }
 
-    function runBootSequence() {
-        if (isMotionReduced) {
-            bootLines.forEach(line => pushLine(line[0], line[1]));
-            return;
-        }
-        bootLines.forEach((line, lineIndex) => {
-            timers.push(window.setTimeout(() => pushLine(line[0], line[1]), bootDelay + lineIndex * bootStep));
-        });
+    function renderMotd() {
+        const motd = document.querySelector('[data-motd]'),
+            hint = document.querySelector('[data-hint]');
+        if (!motd || !hint) return;
+        const lines = motdLines.concat([[`· session ............ ${formatSessionTime(new Date())}`, 'dim']]);
+        motd.replaceChildren(...lines.map(line => buildLine(line[0], line[1])));
+        hint.textContent = hintLine;
+    }
+
+    function formatSessionTime(date) {
+        const pad = value => String(value).padStart(2, '0');
+        return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}`
+            + ` ${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())} UTC`;
+    }
+
+    function buildLine(text, tone) {
+        const line = document.createElement('div');
+        line.className = 'log-line';
+        line.dataset.tone = tone;
+        line.textContent = text;
+        return line;
     }
 
     function handleKeyDown(event) {
@@ -207,14 +220,14 @@
     function pushLine(text, tone) {
         const log = document.querySelector('[data-log]');
         if (!log) return;
+        const shouldStick = isTranscriptAtBottom();
         logLines = logLines.concat([{text, tone: tone || 'fg'}]).slice(-logLimit);
-        const line = document.createElement('div');
-        line.className = 'log-line';
-        line.dataset.tone = tone || 'fg';
-        line.textContent = text;
-        log.appendChild(line);
+        log.appendChild(buildLine(text, tone || 'fg'));
         while (log.childElementCount > logLimit) {
             log.removeChild(log.firstElementChild);
+        }
+        if (shouldStick) {
+            scrollTranscript();
         }
     }
 
@@ -223,6 +236,7 @@
         logLines = [];
         if (log) {
             log.replaceChildren();
+            scrollTranscript();
         }
     }
 
@@ -234,10 +248,22 @@
     }
 
     function focusPromptFromPane(event, input) {
-        const shell = document.querySelector('[data-shell]');
         if (event.target.closest('a, button')) return;
-        if (shell && shell.dataset.open === 'false' && isShellCollapsible()) return;
+        if (event.currentTarget.dataset.shellOpen === 'false' && isShellCollapsible()) return;
         input.focus();
+    }
+
+    function scrollTranscript() {
+        const transcript = document.querySelector('[data-transcript]');
+        if (transcript) {
+            transcript.scrollTop = transcript.scrollHeight;
+        }
+    }
+
+    function isTranscriptAtBottom() {
+        const transcript = document.querySelector('[data-transcript]');
+        if (!transcript) return true;
+        return transcript.scrollHeight - transcript.scrollTop - transcript.clientHeight < 4;
     }
 
     function isShellCollapsible() {
@@ -264,8 +290,6 @@
     }
 
     function teardownTerminal() {
-        timers.forEach(window.clearTimeout);
-        timers.length = 0;
         untrackViewport();
     }
 
