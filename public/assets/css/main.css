@@ -1,213 +1,501 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+:root {
+    --accent: #4f8cff;
+    --bg: #050607;
+    --bg-rail: #08090a;
+    --fg: #e6e9e6;
+    --fg-2: #8b938c;
+    --fg-3: #727a74;
+    --hairline: #141716;
+    --ok: #3dff88;
+    --ornament: #4a524c;
+    --row-active: #12171a;
+    --row-hover: #0e1114;
+    --rule: #1b1f1e;
+    --scanline-opacity: 0.055;
+    --warn: #ffb648;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -khtml-user-select: none;
-    -webkit-touch-callout: none;
-}
-
-html {
-    background: #050505;
 }
 
 body {
-    align-items: center;
-    background:
-        radial-gradient(circle at 78% 18%, rgba(0, 0, 204, 0.22), transparent 32rem),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.035) 25%, transparent 25%) 0 0 / 26px 26px,
-        #050505;
-    color: #d7d7d7;
-    display: flex;
-    flex-direction: column;
-    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    justify-content: center;
-    min-height: 100svh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 4rem 3rem 5rem;
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow: hidden;
 }
 
-a:link,
-a:active,
-a:visited {
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+@keyframes blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes flicker {
+    0%,
+    91%,
+    100% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 0.88;
+    }
+    93% {
+        opacity: 1;
+    }
+    96% {
+        opacity: 0.93;
+    }
+    97% {
+        opacity: 1;
+    }
+}
+
+.crt-scanlines {
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(190, 255, 214, var(--scanline-opacity)) 0,
+        rgba(190, 255, 214, var(--scanline-opacity)) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    inset: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    position: fixed;
+    z-index: 5;
+}
+
+.crt-vignette {
+    animation: flicker 7s infinite;
+    background: radial-gradient(ellipse at 50% 38%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.6) 100%);
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 6;
+}
+
+.layout {
+    display: grid;
+    grid-template-areas:
+        "rail session"
+        "legal session";
+    grid-template-columns: 380px 1fr;
+    grid-template-rows: 1fr auto;
+    height: var(--viewport-height, 100dvh);
+    overflow: hidden;
+}
+
+.rail {
+    background: var(--bg-rail);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    grid-area: rail;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 38px 34px 0;
+}
+
+.rail-top {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.rail-path {
+    color: var(--ornament);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    margin: 0;
+}
+
+.rail-logo {
+    display: block;
+    height: 44px;
+    margin-left: -3px;
+    width: auto;
+}
+
+.rail-divider {
+    background: var(--rule);
+    display: block;
+    height: 2px;
+    width: 36px;
+}
+
+.rail-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tagline {
+    color: var(--fg);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.tagline-break {
+    display: block;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.tagline-support {
+    color: var(--fg-2);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 6px;
+}
+
+.status {
+    align-items: center;
+    color: var(--ok);
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 8px;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+.status-dot {
+    background: var(--ok);
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 6px;
+    width: 6px;
+}
+
+.legal {
+    background: var(--bg-rail);
+    border-right: 1px solid var(--rule);
+    color: var(--ornament);
+    font-size: 11px;
+    grid-area: legal;
+    letter-spacing: 0.04em;
+    margin: 0;
+    padding: 10px 34px 38px;
+}
+
+.session {
+    display: flex;
+    flex-direction: column;
+    grid-area: session;
+    min-width: 0;
+    overflow: hidden;
+    padding: 38px 34px 26px;
+}
+
+.session-label {
+    color: var(--ornament);
+    font-size: 12px;
+    margin: 0;
+    padding-bottom: 16px;
+}
+
+.session-label span {
+    color: var(--fg-2);
+}
+
+.noscript {
+    border-left: 2px solid var(--warn);
+    color: var(--fg-2);
+    margin: 18px 0 0;
+    padding: 8px 12px;
+}
+
+.notfound {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    height: var(--viewport-height, 100dvh);
+    justify-content: center;
+    overflow: hidden;
+    padding: 38px 34px;
+}
+
+.notfound-logo {
+    display: block;
+    height: 44px;
+    margin-left: -3px;
+    width: auto;
+}
+
+.notfound-echo {
+    color: var(--fg-3);
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notfound-status {
+    color: var(--warn);
+    margin: 0;
+}
+
+.notfound-home {
+    align-items: center;
+    color: var(--accent);
+    display: inline-flex;
+    gap: 8px;
     text-decoration: none;
 }
 
-canvas {
-    background-color: #050505;
-    height: 100%;
-    left: 0;
-    opacity: 0.58;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 0;
-}
-
-.shell-window {
-    background: rgba(10, 10, 10, 0.84);
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    box-sizing: border-box;
-    box-shadow:
-        0 20px 80px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    max-width: 840px;
-    position: relative;
-    width: 100%;
-    z-index: 3;
-}
-
-.shell-window.is-dragging {
-    cursor: grabbing;
-}
-
-.shell-window::after {
-    color: rgba(255, 255, 255, 0.07);
-    content: "01001010 01001001 00100000 01000100 01000101 01010110";
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    position: absolute;
-    right: 1.5rem;
-    top: -1.8rem;
-    white-space: nowrap;
-}
-
-.shell-header {
-    align-items: center;
-    background: rgba(255, 255, 255, 0.035);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.34);
-    cursor: grab;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    min-height: 3rem;
-    touch-action: none;
-}
-
-.shell-window.is-dragging .shell-header {
-    cursor: grabbing;
-}
-
-.shell-label {
-    color: #f3f3f3;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 1rem 1.15rem;
-}
-
-.shell-status {
-    color: #00ff00;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0 1.15rem;
-    text-transform: uppercase;
-}
-
-.shell-body {
-    padding: 3.75rem 4.5rem;
-}
-
-.shell-path {
-    color: #747474;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin: 0 0 1.5rem;
-}
-
-.brand-name {
-    color: #0000cc;
-    font-size: clamp(3rem, 18vw, 8rem);
-    letter-spacing: 0;
-    line-height: 0.88;
-    margin: 0 0 1.75rem;
-    text-transform: uppercase;
-}
-
-.brand-name .brand-name_ji {
+.notfound-home-glyph {
     font-weight: 600;
 }
 
-.brand-name .brand-name_dev {
-    font-weight: 400;
+.notfound-home:hover {
+    color: var(--fg);
 }
 
-.brand-description {
-    color: #f3f3f3;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 500;
-    line-height: 1.5;
-    margin: 0 0 0.75rem;
-    overflow-wrap: anywhere;
+.notfound-home:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
-.brand-note {
-    color: #8f8f8f;
-    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-    font-weight: 400;
-    line-height: 1.6;
-    margin: 0 0 3rem;
-    overflow-wrap: anywhere;
-}
-
-.site-footer {
-    bottom: 1.5rem;
-    color: #747474;
-    display: flex;
-    font-size: 0.72rem;
-    font-weight: 500;
-    gap: 1rem;
-    left: 50%;
-    position: fixed;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    z-index: 1;
-}
-
-@media (max-width: 720px) {
+@media (max-width: 899px) {
     body {
-        align-items: flex-start;
-        justify-content: flex-start;
-        min-height: 100svh;
-        padding: 1rem;
+        font-size: 14px;
     }
 
-    .shell-window::after {
+    .layout {
+        grid-template-areas:
+            "rail"
+            "session"
+            "legal";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .rail {
+        align-items: start;
+        border-bottom: 1px solid var(--rule);
+        border-right: 0;
+        column-gap: 22px;
+        display: grid;
+        grid-template-areas:
+            "logo status"
+            "identity identity";
+        grid-template-columns: 1fr auto;
+        padding: 40px 40px 32px;
+        row-gap: 20px;
+    }
+
+    .rail-top {
+        display: contents;
+    }
+
+    .rail-path,
+    .rail-divider {
         display: none;
     }
 
-    .shell-status {
-        padding-right: 1rem;
+    .rail-logo {
+        grid-area: logo;
+        height: 52px;
     }
 
-    .shell-body {
-        padding: 2rem 1rem;
+    .rail-identity {
+        gap: 6px;
+        grid-area: identity;
     }
 
-    .brand-note {
-        margin-bottom: 2rem;
+    .status {
+        grid-area: status;
+        padding-top: 6px;
     }
 
-    .site-footer {
-        flex-wrap: wrap;
-        justify-content: center;
-        left: auto;
-        margin: 3rem 0 0;
-        padding-bottom: 1rem;
-        position: relative;
-        transform: none;
-        white-space: normal;
-        width: 100%;
+    .tagline {
+        font-size: 16px;
+    }
+
+    .tagline-break {
+        display: inline;
+        font-size: inherit;
+        height: auto;
+        overflow: visible;
+    }
+
+    .tagline-support {
+        font-size: 13px;
+        padding-top: 0;
+    }
+
+    .session {
+        padding: 32px 40px 26px;
+    }
+
+    .session-label {
+        padding-bottom: 14px;
+    }
+
+    .legal {
+        background: none;
+        border-right: 0;
+        padding: 0 40px 26px;
+    }
+}
+
+@media (max-width: 599px) {
+    body {
+        font-size: 13px;
+    }
+
+    .layout {
+        grid-template-rows: auto 1fr auto;
+        padding: 20px 20px 18px;
+    }
+
+    .rail {
+        align-items: center;
+        border-bottom: 0;
+        column-gap: 12px;
+        padding: 0;
+        row-gap: 0;
+    }
+
+    .rail-logo {
+        height: 26px;
+        margin-left: -2px;
+    }
+
+    .rail-identity {
+        border-top: 1px solid var(--rule);
+        margin-top: 18px;
+        padding: 24px 0 22px;
+    }
+
+    .status {
+        font-size: 10px;
+        gap: 6px;
+        padding-top: 0;
+    }
+
+    .status-dot {
+        height: 5px;
+        width: 5px;
+    }
+
+    .status-label {
+        display: none;
+    }
+
+    .tagline {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
+    .tagline-break[data-break="1"] {
+        display: block;
+        font-size: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .tagline-support {
+        font-size: 12px;
+    }
+
+    .session {
+        padding: 0;
+    }
+
+    .session-label {
+        display: none;
+    }
+
+    .legal {
+        font-size: 10px;
+        padding: 10px 0 0;
+        text-align: center;
+    }
+
+    .notfound {
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .notfound-logo {
+        height: 26px;
+        margin-left: -2px;
+    }
+}
+
+@media (max-width: 899px) and (max-height: 620px), (max-height: 400px) {
+    body {
+        overflow: auto;
+    }
+
+    .layout {
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+
+    .session {
+        overflow: visible;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) and (max-height: 620px) {
+    .rail {
+        padding: 24px 40px 20px;
+        row-gap: 14px;
+    }
+
+    .rail-logo {
+        height: 40px;
+    }
+
+    .session {
+        padding: 22px 40px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .crt-vignette {
+        animation: none;
     }
 }

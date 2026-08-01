@@ -1,63 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>JI DEV - www.jasey.io</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/social.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <canvas id="c"></canvas>
-    <main class="shell-window" data-shell-window aria-label="JI DEV splash page">
-      <header class="shell-header" data-shell-handle>
-        <span class="shell-label">:: jasey.io</span>
-        <span class="shell-status">status: online</span>
-      </header>
-      <section class="shell-body">
-        <p class="shell-path">~/jasey.io</p>
-        <h1 class="brand-name">
-          <span class="brand-name_ji">JI</span> <span class="brand-name_dev">DEV</span>
-        </h1>
-        <p class="brand-description">
-          custom software / integrations / automation
-        </p>
-        <p class="brand-note">
-          Building reliable software for systems that need to keep working.
-        </p>
-        <div class="system-grid">
-          <a class="system-link" href="#" data-contact-link="email" data-contact-index="1" aria-label="Resolving email">
-            <span class="system-link_index">[01]</span>
-            <span class="system-link_label">email</span>
-            <span class="system-link_value" data-contact-value>resolving...</span>
-          </a>
-          <a class="system-link" href="#" data-contact-link="github" data-contact-index="2" aria-label="Resolving GitHub">
-            <span class="system-link_index">[02]</span>
-            <span class="system-link_label">github</span>
-            <span class="system-link_value" data-contact-value>resolving...</span>
-          </a>
-          <a class="system-link" href="#" data-contact-link="blog" data-contact-index="3" aria-label="Resolving blog">
-            <span class="system-link_index">[03]</span>
-            <span class="system-link_label">blog</span>
-            <span class="system-link_value" data-contact-value>resolving...</span>
-          </a>
-          <a class="system-link" href="#" data-contact-link="linkedin" data-contact-index="4" aria-label="Resolving LinkedIn">
-            <span class="system-link_index">[04]</span>
-            <span class="system-link_label">linkedin</span>
-            <span class="system-link_value" data-contact-value>resolving...</span>
-          </a>
-          <a class="system-link" href="#" data-contact-link="stack" data-contact-index="5" aria-label="Resolving Stack Overflow">
-            <span class="system-link_index">[05]</span>
-            <span class="system-link_label">stack</span>
-            <span class="system-link_value" data-contact-value>resolving...</span>
-          </a>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      &copy; 2026 <span>JI DEV</span> <span>ABN 98 822 381 380</span>
-    </footer>
-    <script type="text/javascript" src="assets/js/tiles.js"></script>
-    <script type="text/javascript" src="assets/js/contact-links.js"></script>
-    <script type="text/javascript" src="assets/js/shell-window.js"></script>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#050607">
+        <meta name="description" content="JI DEV - custom software, integrations and automation. Building reliable software for systems that need to keep working.">
+        <title>JI DEV &mdash; jasey.io</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+        <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+        <link rel="alternate icon" href="favicon.ico">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="JI DEV">
+        <meta property="og:description" content="custom software / integrations / automation">
+        <meta property="og:url" content="https://www.jasey.io/">
+        <meta property="og:image" content="https://www.jasey.io/assets/img/og-card.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/session.css">
+        <noscript>
+            <style>
+                .endpoints,
+                .shell {
+                    display: none;
+                }
+            </style>
+        </noscript>
+    </head>
+    <body>
+        <div class="crt-scanlines" aria-hidden="true"></div>
+        <div class="crt-vignette" aria-hidden="true"></div>
+        <main class="layout" data-layout>
+            <aside class="rail">
+                <div class="rail-top">
+                    <p class="rail-path">~/jasey.io</p>
+                    <img class="rail-logo" src="assets/img/logo-dark.png" alt="&gt;.JI DEV" width="2031" height="334">
+                    <span class="rail-divider" aria-hidden="true"></span>
+                    <div class="rail-identity">
+                        <p class="tagline">custom software<span class="tagline-break"
+                            data-break="1"> / </span>integrations<span class="tagline-break"
+                            data-break="2"> / </span>automation</p>
+                        <p class="tagline-support">Building reliable software for systems that need to keep working.</p>
+                    </div>
+                </div>
+                <p class="status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span class="status-label">STATUS:&nbsp;</span><span class="status-value">ONLINE</span>
+                </p>
+            </aside>
+            <section class="session" data-session>
+                <p class="session-label">session · <span>ls -1 endpoints</span></p>
+                <nav class="endpoints" aria-label="Endpoints">
+                    <a class="endpoint" data-endpoint="email" href="#">
+                        <span class="endpoint-index">01</span>
+                        <span class="endpoint-body">
+                            <span class="endpoint-label">email</span>
+                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                        </span>
+                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="endpoint" data-endpoint="github" href="#">
+                        <span class="endpoint-index">02</span>
+                        <span class="endpoint-body">
+                            <span class="endpoint-label">github</span>
+                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                        </span>
+                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="endpoint" data-endpoint="blog" href="#">
+                        <span class="endpoint-index">03</span>
+                        <span class="endpoint-body">
+                            <span class="endpoint-label">blog</span>
+                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                        </span>
+                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="endpoint" data-endpoint="linkedin" href="#">
+                        <span class="endpoint-index">04</span>
+                        <span class="endpoint-body">
+                            <span class="endpoint-label">linkedin</span>
+                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                        </span>
+                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a class="endpoint" data-endpoint="stack" href="#">
+                        <span class="endpoint-index">05</span>
+                        <span class="endpoint-body">
+                            <span class="endpoint-label">stack</span>
+                            <span class="endpoint-value" data-endpoint-value>resolving…</span>
+                        </span>
+                        <span class="endpoint-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </nav>
+                <noscript>
+                    <p class="noscript">
+                        Endpoints are assembled in the browser, so this list stays empty without JavaScript.
+                        Reach JI DEV by email at me (at) jasey (dot) io.
+                    </p>
+                </noscript>
+                <div class="shell" data-shell data-open="false">
+                    <button class="shell-toggle" type="button" data-shell-toggle
+                        aria-expanded="false" aria-controls="shell-body">
+                        <span class="shell-toggle-glyph" aria-hidden="true">›</span>
+                        <span class="shell-toggle-label">open a shell</span>
+                        <span class="shell-toggle-hint" aria-hidden="true">tap</span>
+                    </button>
+                    <div class="shell-body" id="shell-body">
+                        <div class="log" role="log" aria-live="polite" data-log></div>
+                        <form class="prompt" data-prompt>
+                            <span class="prompt-glyph" aria-hidden="true">›</span>
+                            <span class="prompt-echo" data-prompt-echo></span>
+                            <span class="prompt-cursor" aria-hidden="true"></span>
+                            <button class="prompt-close" type="button" data-shell-close>CLOSE</button>
+                            <input class="prompt-input" data-prompt-input type="text"
+                                aria-label="Terminal command input" spellcheck="false"
+                                autocomplete="off" autocapitalize="off" autocorrect="off">
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <p class="legal">© 2026 JI DEV · ABN 98 822 381 380</p>
+        </main>
+        <script src="assets/js/endpoints.js"></script>
+        <script src="assets/js/terminal.js"></script>
+    </body>
 </html>
