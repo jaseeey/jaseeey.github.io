@@ -3,7 +3,7 @@
         tagline = 'custom software / integrations / automation',
         commandNames = ['help', 'ls', 'links', 'open', 'whoami', 'clear', 'date', 'uname', 'contact'],
         motdLines = [
-            ['jasey.io tty1 — session opened', 'dim'],
+            ['jasey.io tty1: session opened', 'dim'],
             ['Welcome to jasey.io.', 'fg'],
             ['· host ............... jasey.io', 'dim'],
             ['· build .............. 1.0 static x86_64', 'dim'],
@@ -155,7 +155,7 @@
             openEndpoint(argument, `open: no such endpoint: ${argument || '∅'}`);
             return;
         }
-        openEndpoint(head, `${head}: command not found — try 'help'`);
+        openEndpoint(head, `${head}: command not found, try 'help'`);
     }
 
     function listEndpoints() {

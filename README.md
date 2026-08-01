@@ -1,7 +1,7 @@
 # jasey.io
 
-Personal splash page for [jasey.io](https://www.jasey.io) — a single-screen link hub built as a
-split-pane terminal, implemented from the *jasey.io — Design & implementation specification*
+Personal splash page for [jasey.io](https://www.jasey.io): a single-screen link hub built as a
+split-pane terminal, implemented from the *jasey.io* design and implementation specification
 (rev 0.1, option 1b).
 
 ## Development
@@ -36,7 +36,7 @@ publishes from `master`.
 
 No address is served in the HTML. Each row ships with a `data-endpoint` token only; the displayed
 value is assembled at runtime from character codes, and the `href` is written to the anchor on the
-first pointer, touch or focus interaction — never on load. A headless fetch of the document
+first pointer, touch or focus interaction, never on load. A headless fetch of the document
 therefore sees no `mailto:` and no profile URLs.
 
 The trade-off is deliberate: with JavaScript disabled the endpoint list is hidden and a `noscript`
@@ -51,9 +51,9 @@ Three breakpoints, two media queries. The two-pane relationship rotates rather t
 
 | Width | Split | Prompt |
 | --- | --- | --- |
-| >= 900px | Vertical — 380px identity rail, session fills the rest | Always live |
-| 600–899px | Horizontal — identity becomes a top band | Always live |
-| < 600px | None — the endpoint list is the page | Collapsed behind `open a shell` |
+| >= 900px | Vertical: 380px identity rail, session fills the rest | Always live |
+| 600-899px | Horizontal: identity becomes a top band | Always live |
+| < 600px | None: the endpoint list is the page | Collapsed behind `open a shell` |
 
 Nothing on the page scrolls at any width. Heights use `100dvh`, never `100vh`, so iOS Safari's
 toolbar cannot push the prompt out of view.
