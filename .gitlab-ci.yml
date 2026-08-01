@@ -6,6 +6,8 @@ pages:
     - npm install
   script:
     - npm run build
+    - test -f build/index.html
+    - rm -rf public
     - mv build public
   artifacts:
     paths:
